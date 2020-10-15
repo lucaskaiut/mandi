@@ -3,20 +3,16 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Requests\Panel\AthleteFormRequest;
-use App\Mail\AthleteMensalidade;
 use App\Models\Panel\Category;
 use App\Models\Panel\Company;
-use Illuminate\Cache\Events\CacheEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Panel\Athlete;
 use PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\DB;
 use App\Mail\AthleteMail;
 use Jenssegers\Date\Date;
-use App\Models\SetDatabaseConnection;
 
 /*********************************************\
 *                                             *
@@ -28,24 +24,11 @@ class AthleteController extends Controller
 
     private $athletePaginate = 15;
 
-    public function index(Athlete $athlete, SetDatabaseConnection $set_connection)
+    public function index(Athlete $athlete, Category $category)
     {
-
-        $database = [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'port' => '3306',
-            'database' => 'dynamo_voleibol',
-            'username' => 'root',
-            'password' => 'vagrant'
-        ];
-
-        $mysqlConnection = $set_connection->setConnection($database);
 
         #a variável usar está recebendo um objeto do usuário que está logado no momento
         $user = Auth::user();
-
-        dd($user);
 
         #verifica se o usuário tem a permissão 'athlete-list', caso não tenha, encerra e execução do método
         if (!$user->hasPermissionTo('athlete-list')) {
@@ -53,10 +36,10 @@ class AthleteController extends Controller
         }
 
         #essa variável recebe todas as categorias
-        $categories = $mysqlConnection->table('categories')->get();
+        $categories = $category->all();
 
         #essa variável recebe a seguinte query: SELECT * FROM athletes WHERE active = 1 AND deleted = 0 ORDER BY matricula
-        $athletes = $mysqlConnection->table('athletes')->where('active', 1)->where('deleted', 0)->orderBy('matricula')->paginate($this->athletePaginate);
+        $athletes = $athlete->where('active', 1)->where('deleted', 0)->orderBy('matricula')->paginate($this->athletePaginate);
 
         #essa variável recebe todos os atletas com a flag 'inativo'
         //$pendingAthletes = count($athlete->pendingAthlete());
