@@ -1,0 +1,87 @@
+@extends('adminlte::page')
+
+@section('title', 'Dynamo Voleibol')
+<style>
+    #blanket, #aguarde, #aguardemail {
+        position: fixed;
+        display: none;
+    }
+
+    #blanket {
+        left: 0;
+        top: 0;
+        background-color: #f0f0f0;
+        filter: alpha(opacity=65);
+        height: 100%;
+        width: 100%;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+        opacity: 0.65;
+        z-index: 9998;
+    }
+
+    #aguarde, #aguardemail {
+        width: auto;
+        height: 30px;
+        top: 40%;
+        left: 45%;
+        background: url('http://i.imgur.com/SpJvla7.gif') no-repeat 0 50%;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        z-index: 9999;
+        padding-left: 27px;
+    }
+</style>
+@section('content_header')
+    <h1 class="title-h1">Cadastro de Conta Bancária</h1>
+    @if(isset($errors) && count($errors)>0)
+        <div class="alert alert-danger" style="margin-top: 10px;">
+            <p>Todos os campos com * são obrigatórios</p>
+        </div>
+    @endif
+@stop
+
+@section('content')
+    <div class="main-box">
+        <div class="box-body">
+            <form method="POST" action="{{route('backup')}}">
+                {{csrf_field()}}
+                <div class="col-lg-12">
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">E-Mail</label>
+                        <input type="email" class="form-control" name="email" placeholder="E-Mail">
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-2">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="sendMail" value="1" id="sendMail">
+                                Enviar E-Mail
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="download" value="1">
+                                Download
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-primary col-md-2">Gerar Backup</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="blanket"></div>
+    <div id="aguardemail">Gerando arquivo e enviando e-mail</div>
+    <script>
+        $(document).ready(function () {
+            $('.btn-primary').click(function () {
+                var sendMail = document.getElementById('sendMail')
+                if (sendMail.checked) {
+                    $('#aguardemail, #blanket').css('display', 'block');
+                }
+            });
+        });
+
+    </script>
+@stop

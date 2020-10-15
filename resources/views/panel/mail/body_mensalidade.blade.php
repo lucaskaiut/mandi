@@ -1,0 +1,1 @@
+<p>Segue anexo recibo referente a mensalidade {{$mensalidade}}</p>

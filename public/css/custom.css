@@ -1,0 +1,98 @@
+.main-sidebar{
+    background-color: #444 !important;
+    font-weight: bold;
+}
+.sidebar-menu>li.active>a{
+        background: #1d1d1d !important;
+}
+
+.sidebar-menu>li:hover>a{
+    background: #1b1b1b !important;
+}
+
+.sidebar-menu>li.menu-open>a {
+    background: #404040 !important;
+}
+
+.sidebar-menu>li>.treeview-menu {
+    background: #404040 !important;
+}
+
+.badge{
+    background-color: #bf0000;
+}
+
+.main-box{
+    background-color: white;
+    box-shadow:0px 0px 10px 0px #767676;
+    padding: 10px;
+    width: 98%;
+    margin-left: 1%;
+}
+
+.title-h1{
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.skin-yellow .main-header .navbar {
+    background-color: #193879 !important;
+}
+
+.skin-yellow .main-header .navbar .sidebar-toggle:hover {
+    background-color: #132c5f !important;
+}
+
+.skin-yellow .sidebar-menu>li.active>a {
+    border-left-color: #193879 !important;
+}
+
+.skin-yellow .main-header .logo {
+    background-color: #193879 !important;
+}
+
+.skin-yellow .sidebar-menu>li.header{
+    background: #193879 !important;
+    color: #fff !important;
+}
+
+.btn-custom.active{
+    color: #FFF;
+    background: #193879;
+    border-color: #102248;
+}
+
+.btn-custom{
+    color: #FFF;
+    background-color: #193879;
+    border-color: #102248;
+}
+
+.btn-custom:hover{
+    border-color: #102248;
+    background-color: #3e65b7;
+    color: #fff;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination>.active>span{
+    background-color: #193879;
+    border-color: #102248;
+}
+
+.pagination>.active>span:hover{
+    background-color: #193879;
+    border-color: #102248;
+}
+
+.edit-link {
+    color: #193879;
+}
+
+.teste {
+    color: pink;
+}
