@@ -304,7 +304,6 @@ class CashierController extends Controller
             $lastCashFlow = $cashFlow->where('status', 'Aberto')->where('cashier_id', $cashierDB['id'])->orderBy('created_at', 'desc')->first();
             $current = Carbon::now();
             $cashierHistories = $history->where('cashier_id', $cashierDB['id'])
-                ->where('pag_tipo_bancaria', 0)
                 ->where('abertura_id', $lastCashFlow['id'])
                 ->paginate($this->paginate);
 
