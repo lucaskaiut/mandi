@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Panel'], function () {
 Auth::routes();
 
 //Change the URL of the route and uncomment the route above to show the "welcome" view on "/" route.
-Route::get('/panel', 'HomeController@index')->name('home');
+Route::get('/painel', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');
 
 
