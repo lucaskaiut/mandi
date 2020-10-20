@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('panel.main')
 
 @section('title', 'Dynamo Voleibol')
 
@@ -23,6 +23,7 @@
 @stop
 
 @section('content')
+
     <div class="box-header">
     </div>
     <div class="main-box">
