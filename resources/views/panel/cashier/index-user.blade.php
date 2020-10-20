@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('panel.main')
 
 @push('https://raw.githubusercontent.com/igorescobar/jQuery-Mask-Plugin/master/dist/jquery.mask.min.js')
 

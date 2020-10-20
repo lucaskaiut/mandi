@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('panel.main')
 
 @section('title', 'Dynamo Voleibol')
 
